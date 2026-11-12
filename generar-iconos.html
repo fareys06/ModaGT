@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de iconos ModaGT</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8f6;
+            text-align: center;
+            padding: 40px 20px;
+            color: #493b3d;
+        }
+
+        .contenedor {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #00000015;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 20px;
+        }
+
+        button {
+            background: #d88e9b;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #bd7180;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h1>ModaGT</h1>
+    <h3>Generador automático de iconos</h3>
+
+    <p>Selecciona tu imagen original del logo.</p>
+
+    <input type="file" id="imagen" accept="image/*">
+
+    <br>
+
+    <img id="vistaPrevia" alt="Vista previa del icono">
+
+    <br>
+
+    <button onclick="generarIconos()">
+        Generar iconos
+    </button>
+
+    <p id="mensaje"></p>
+</div>
+
+<script>
+    let imagenOriginal = new Image();
+
+    document.getElementById("imagen").addEventListener("change", function(e) {
+        const archivo = e.target.files[0];
+
+        if (!archivo) return;
+
+        const url = URL.createObjectURL(archivo);
+
+        imagenOriginal.onload = function() {
+            document.getElementById("vistaPrevia").src = url;
+        };
+
+        imagenOriginal.src = url;
+    });
+
+    function generarIconos() {
+        if (!imagenOriginal.src) {
+            alert("Primero selecciona una imagen.");
+            return;
+        }
+
+        [192, 512].forEach(function(tamano) {
+            const canvas = document.createElement("canvas");
+
+            canvas.width = tamano;
+            canvas.height = tamano;
+
+            const ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "#fff8f6";
+            ctx.fillRect(0, 0, tamano, tamano);
+
+            const escala = Math.min(
+                tamano / imagenOriginal.width,
+                tamano / imagenOriginal.height
+            );
+
+            const ancho = imagenOriginal.width * escala;
+            const alto = imagenOriginal.height * escala;
+
+            const x = (tamano - ancho) / 2;
+            const y = (tamano - alto) / 2;
+
+            ctx.drawImage(
+                imagenOriginal,
+                x,
+                y,
+                ancho,
+                alto
+            );
+
+            canvas.toBlob(function(blob) {
+                const enlace = document.createElement("a");
+
+                enlace.href = URL.createObjectURL(blob);
+                enlace.download = "icon-" + tamano + ".png";
+
+                enlace.click();
+
+                setTimeout(() => URL.revokeObjectURL(enlace.href), 1000);
+            }, "image/png");
+        });
+
+        document.getElementById("mensaje").textContent =
+            "¡Listo! Guarda los dos iconos descargados dentro de la carpeta img.";
+    }
+</script>
+
+</body>
+</html>

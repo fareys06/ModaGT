@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7d5367">
+  <title>Contacto | ModaGT</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="contacto">
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">M</span><span>Moda<span>GT</span><small>Tu estilo, tu esencia</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Inicio</a>
+      <div class="nav-drop">
+        <button class="nav-drop-btn" type="button">Prendas⌄</button>
+        <div class="nav-drop-content">
+          <a href="blusas.html">Blusas</a><a href="pantalones.html">Pantalones</a>
+          <a href="vestidos.html">Vestidos</a><a href="zapatos.html">Zapatos</a>
+          <a href="accesorios.html">Accesorios</a>
+        </div>
+      </div>
+      <a href="index.html#armar-outfit">Armar outfit</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="compra.html">Mi compra <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero compact-hero">
+      <span class="eyebrow">ESTAMOS PARA AYUDARTE</span>
+      <h1>Hablemos de estilo.</h1>
+      <p>Escríbenos tus dudas sobre productos, compras o envíos.</p>
+    </section>
+
+    <section class="section contact-layout">
+      <div class="contact-info">
+        <span class="eyebrow">CONTACTO MODAGT</span>
+        <h2>Queremos escucharte.</h2>
+        <p>Completa el formulario y guardaremos tu mensaje en este dispositivo como demostración.</p>
+        <div class="contact-detail"><b>✉</b><span><strong>Correo</strong><br>hola@modagt.com</span></div>
+        <div class="contact-detail"><b>⌖</b><span><strong>Ubicación</strong><br>Guatemala, Guatemala</span></div>
+        <div class="contact-detail"><b>◷</b><span><strong>Horario</strong><br>Lunes a sábado · 9:00 a 18:00</span></div>
+      </div>
+
+      <form class="form-card" id="contactForm">
+        <h2>Envíanos un mensaje</h2>
+        <label>Nombre completo
+          <input name="nombre" required placeholder="Tu nombre">
+        </label>
+        <label>Correo electrónico
+          <input name="correo" type="email" required placeholder="tunombre@correo.com">
+        </label>
+        <label>Asunto
+          <select name="asunto">
+            <option>Consulta sobre un producto</option>
+            <option>Estado de mi compra</option>
+            <option>Envíos y entregas</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label>Mensaje
+          <textarea name="mensaje" rows="5" required placeholder="¿En qué podemos ayudarte?"></textarea>
+        </label>
+        <button class="btn btn-dark full" type="submit">Enviar mensaje →</button>
+        <p class="form-note">Formulario demostrativo: no envía correos a internet.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><a class="brand footer-brand" href="index.html"><span class="brand-mark">M</span><span>ModaGT<small>Tu estilo, tu esencia</small></span></a><p>Moda para expresar quién eres.</p></div>
+    <div><strong>Explora</strong><a href="blusas.html">Blusas</a><a href="pantalones.html">Pantalones</a><a href="vestidos.html">Vestidos</a></div>
+    <div><strong>Ayuda</strong><a href="contacto.html">Contacto</a><a href="compra.html">Compras y envíos</a></div>
+    <p class="copyright">© 2026 ModaGT · Tienda de ropa.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="productModal">
+    <section class="product-modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+</body>
+</html>

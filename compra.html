@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7d5367">
+  <title>Mi compra | ModaGT</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="compra">
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">M</span><span>Moda<span>GT</span><small>Tu estilo, tu esencia</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Inicio</a>
+      <div class="nav-drop">
+        <button class="nav-drop-btn" type="button">Prendas⌄</button>
+        <div class="nav-drop-content">
+          <a href="blusas.html">Blusas</a><a href="pantalones.html">Pantalones</a>
+          <a href="vestidos.html">Vestidos</a><a href="zapatos.html">Zapatos</a>
+          <a href="accesorios.html">Accesorios</a>
+        </div>
+      </div>
+      <a href="index.html#armar-outfit">Armar outfit</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="compra.html">Mi compra <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero compact-hero">
+      <span class="eyebrow">MODAGT / CHECKOUT</span>
+      <h1>Tu compra, a un paso.</h1>
+      <p>Revisa tus prendas y completa la información de entrega.</p>
+    </section>
+
+    <section class="section checkout-layout">
+      <div class="checkout-main">
+        <div class="panel">
+          <div class="panel-title">
+            <span>01</span>
+            <div><h2>Tu carrito</h2><p>Productos seleccionados</p></div>
+          </div>
+          <div id="checkoutItems"></div>
+        </div>
+
+        <form id="checkoutForm" class="panel">
+          <div class="panel-title">
+            <span>02</span>
+            <div><h2>Datos de envío</h2><p>¿A dónde enviamos tu pedido?</p></div>
+          </div>
+
+          <div class="form-grid">
+            <label>Nombre completo<input name="nombre" required placeholder="Nombre y apellido"></label>
+            <label>Teléfono<input name="telefono" required type="tel" placeholder="0000-0000"></label>
+            <label>Correo electrónico<input name="correo" type="email" required placeholder="correo@ejemplo.com"></label>
+            <label>Departamento<input name="departamento" required placeholder="Ej. Guatemala"></label>
+            <label class="wide">Dirección exacta<input name="direccion" required placeholder="Zona, colonia, calle, número de casa o apartamento"></label>
+            <label>Municipio<input name="municipio" required placeholder="Municipio"></label>
+            <label>Referencia de entrega<input name="referencia" placeholder="Casa de portón negro, local, etc."></label>
+            <label class="wide">Notas adicionales<textarea name="notas" rows="3" placeholder="Indicaciones para la entrega (opcional)"></textarea></label>
+          </div>
+
+          <div class="panel-title payment-title">
+            <span>03</span>
+            <div><h2>Método de pago</h2><p>Selecciona cómo deseas pagar.</p></div>
+          </div>
+
+          <label class="radio-option">
+            <input type="radio" name="pago" value="Efectivo contra entrega" checked>
+            Efectivo contra entrega
+            <small>Pago al recibir tu pedido.</small>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="pago" value="Transferencia bancaria">
+            Transferencia bancaria
+            <small>Demostración: no procesa transferencias reales.</small>
+          </label>
+
+          <button class="btn btn-dark full" type="submit">Confirmar pedido y generar factura →</button>
+          <p class="form-note">Esta tienda es una demostración local. No se realiza ningún cobro real.</p>
+        </form>
+      </div>
+
+      <aside class="order-summary">
+        <span class="eyebrow">RESUMEN</span>
+        <h2>Tu pedido</h2>
+        <div id="orderSummary"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><a class="brand footer-brand" href="index.html"><span class="brand-mark">M</span><span>ModaGT<small>Tu estilo, tu esencia</small></span></a><p>Moda para expresar quién eres.</p></div>
+    <div><strong>Explora</strong><a href="blusas.html">Blusas</a><a href="pantalones.html">Pantalones</a><a href="vestidos.html">Vestidos</a></div>
+    <div><strong>Ayuda</strong><a href="contacto.html">Contacto</a><a href="compra.html">Compras y envíos</a></div>
+    <p class="copyright">© 2026 ModaGT · Tienda de ropa.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="productModal">
+    <section class="product-modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+</body>
+</html>
