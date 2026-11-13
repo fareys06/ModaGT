@@ -11,6 +11,11 @@
     "orientation": "portrait",
     "background_color": "#fff8f6",
     "theme_color": "#d88e9b",
+    "categories": [
+        "shopping",
+        "lifestyle",
+        "fashion"
+    ],
     "icons": [
         {
             "src": "./img/icon-192.png",
